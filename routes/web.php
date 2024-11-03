@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['namespace' => 'App\Http\Controllers', 'middleware' => ['DetectDevice']], function () {
+    Route::resource('/', HomeController::class)->only(['index', 'show']);
+    Route::get('/map/roadtrippers', [HomeController::class, 'mapping'])->name('roadtrippers');
 });

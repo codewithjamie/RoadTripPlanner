@@ -11,33 +11,29 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">IP</th>
-                    <th scope="col">Device Name</th>
-                    <th scope="col">Searched Details</th>
-                    <th scope="col">Destinations</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Longitude</th>
+                    <th scope="col">Latitude</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                  </tr>
+                    @php
+                        $i = 1;
+                    @endphp
+                    @foreach ($data as $collection)
+                        <tr>
+                            <th scope="row">{{ $i++ }}</th>
+                            <td>{{ $collection->ip_address }}</td>
+                            <td>{{ $collection->address }}</td>
+                            <td>{{ $collection->longitude }}</td>
+                            <td>{{ $collection->latitude }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
+
             </table>
+            {{ $data->links() }}
         </div>
     </div>
 </div>
 @endsection
-a
